@@ -1,0 +1,237 @@
+using System;
+using System.Collections.Generic;
+namespace Studentlib
+{
+    public class Student
+    {
+
+        public string Id;
+        public string Fio;
+        public string Group;
+        public int Vozrast;
+        public string Data_Rozhdeniya;
+        public List <Student> list = new List <Student>();
+        public void AddId(string id)
+        {
+            Id = id;
+        }
+        public void AddName(string f)
+        {
+            Fio = f;
+        }
+
+        public void AddData(string d)
+        {
+            Data_Rozhdeniya = d;
+        }
+        public void AddVozrast(int v)
+        {
+            Vozrast = v;
+        }
+
+        public void AddGroup(string g)
+        {
+            Group = g;
+        }
+        public void addStudent(Student st)
+        {
+            list.Add(st);
+        }
+        public void Show()
+        {
+            foreach (var student in list)
+            {
+                Console.WriteLine(student);
+            }
+        }
+        public void Add()
+        {
+            int control;
+            control = Convert.ToInt32(Console.ReadLine());
+            switch (control)
+            {
+
+                case 1:
+                    Student st = new Student();
+                    Console.WriteLine("Введите id:");
+                    st.AddId(Console.ReadLine());
+                    Console.WriteLine("Введите фио:");
+                    st.AddName(Console.ReadLine());
+                    Console.WriteLine("Введите дату рождения:");
+                    st.AddData(Console.ReadLine());
+                    Console.WriteLine("Введите возраст:");
+                    st.AddVozrast(Console.Read());
+                    Console.WriteLine("Введите группу:");
+                    st.AddGroup(Console.ReadLine());
+                    addStudent(st);
+                    break;
+                case 2:
+                    Show();
+                    break;
+                default:
+                    break;
+            }
+            Console.ReadLine();
+        }
+        public void del(string id)
+        {
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].Id == id) list.RemoveAt(i); // Console.WriteLine(i.id);
+            }
+        }
+        public void izmenie(string id, string fio, string data_r, int vozrast, string group)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].Id == id)
+                {
+                    list[i].Fio = fio;
+                    list[i].Data_Rozhdeniya = data_r;
+                    list[i].Vozrast = vozrast;
+                    list[i].Group = group;
+                }
+
+            }
+        }
+        public void show()
+        {
+
+            foreach (var i in list)
+            {
+                Console.WriteLine(i.Id + " " + i.Fio + "" + i.Data_Rozhdeniya + "" + i.Vozrast + "" + i.Group);
+            }
+        }
+        public void find_id()
+        {
+            Console.WriteLine("id :");
+            string a = Console.ReadLine();
+            bool ft = false;
+            foreach (var i in list)
+            {
+                Student st = new Student();
+                if (a == i.Id)
+                {
+                    list.Add(st);
+                    ft = true;
+                }
+            }
+            if (!ft)
+            {
+                Console.WriteLine("Ошибка");
+                return;
+            }
+            foreach (var i in list)
+            {
+                Console.WriteLine(i.ToString());
+            }
+        }
+        public int S
+        {
+            set
+            {
+                if (value < 18)
+                {
+                    Console.WriteLine("Возраст должен быть < 17");
+                }
+                else
+                {
+                    Vozrast = value;
+                }
+            }
+            get { return Vozrast; }
+        }
+        public int A
+        {
+            set
+            {
+                if (value > 18)
+                {
+                    Console.WriteLine("Возраст должен быть > 17");
+                }
+                else
+                {
+                    Vozrast = value;
+                }
+            }
+            get { return Vozrast; }
+        }
+        public void vozras_s()
+        {
+            Console.WriteLine("Введите возраст:");
+            int i = Console.Read();
+            bool ft = false;
+            foreach (var student in list)
+            {
+                Student st = new Student();
+                if (i == st.S)
+                {
+                    list.Add(st);
+                    ft = true;
+                }
+            }
+            if (!ft)
+            {
+                Console.WriteLine("Ошибка");
+                return;
+
+            }
+            foreach (var student in list)
+            {
+                Console.WriteLine(student.ToString());
+            }
+        }
+        public void vozrast_a()
+        {
+            Console.WriteLine("Введите возраст:");
+            int i = Console.Read();
+            bool ft = false;
+            foreach (var student in list)
+            {
+                Student st = new Student();
+                if (i == st.A)
+                {
+                    list.Add(st);
+                    ft = true;
+                }
+            }
+            if (!ft)
+            {
+                Console.WriteLine("Ошибка");
+                return;
+
+            }
+            foreach (var student in list)
+            {
+                Console.WriteLine(student.ToString());
+            }
+        }
+        public void Phoisk()
+        {
+            Console.WriteLine("Введите фио:");
+            string i = Console.ReadLine();
+            bool ft = false;
+            foreach (var student in list)
+            {
+                Student st = (Student)student;
+                if (i == st.Fio)
+                {
+                    list.Add(st);
+                    ft = true;
+                }
+            }
+            if (!ft)
+            {
+                Console.WriteLine("Ошибка");
+                return;
+
+            }
+            foreach (var student in list)
+            {
+                Console.WriteLine(student.ToString());
+            }
+        }
+    }
+}
+    
